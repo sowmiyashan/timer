@@ -225,6 +225,8 @@ function PR(){
 }
 
 function cancel(){
+    pr = 1;
+    PR();
     input = document.getElementById("input")
     input.style.display = "initial"
     circular = document.getElementById("circular")
