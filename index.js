@@ -1,3 +1,4 @@
+
 function addSpan(num,hand){
     var numbers = document.getElementById(hand);
     for(i=0; i<num; i++){
@@ -96,18 +97,16 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 
 function calcTime(){
-    TIME_LIMIT = (hindex  * 3600) + (mindex * 60) + sindex;
+    TIME_LIMIT = (hindex  * 3600) + (mindex * 60) + sindex +1 ;
     timeLeft = TIME_LIMIT;
-    console.log(TIME_LIMIT);
-    console.log(timeLeft);
 }
 
 
 function formatTime(time) {
 
-    var hours = Math.floor(time/3600);
+    let hours = Math.floor(time/3600);
     // The largest round integer less than or equal to the result of time divided being by 60.
-    var minutes = Math.floor((time - hours*3600) / 60);
+    let minutes = Math.floor((time - hours*3600) / 60);
     
     // Seconds are the remainder of the time divided by 60 (modulus operator)
     let seconds = time % 60;
@@ -132,7 +131,7 @@ let timerInterval = null;
 
 // Divides time left by the defined time limit.
 function calculateTimeFraction() {
-    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    let rawTimeFraction = timeLeft / TIME_LIMIT;
     return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
       
@@ -148,49 +147,61 @@ function setCircleDasharray() {
 
 function startTimer() {
     timerInterval = setInterval(() => {
-      
       // The amount of time passed increments by one
       if(timeLeft!=0){
         timePassed = timePassed += 1;
         timeLeft = TIME_LIMIT - timePassed;  
+        setCircleDasharray();
       }
+      else{
+        stopTimer();
+        document.getElementById("animateCircle").setAttribute("stroke-dasharray", "754");
+    }
       
       
       // The time left label is updated
       document.getElementById("time-left").innerHTML = formatTime(timeLeft);
 
-      setCircleDasharray();
+      
     }, 1000);
+    
+}
+
+function stopTimer(){
+    clearTimeout(timerInterval);
 }
 
 document.getElementById("circular").innerHTML = `
-    <div class="wrap">
-        <div id="timer">
-        <svg width="260" height="260" class="base-timer__svg">
-            <circle class="defaultCircle" cx="125" cy="125" r="120" stroke="#80eeff"
-            stroke-width="5" fill="none" stroke-linecap="round" />
-            <circle id="animateCircle" cx="135" cy="125" r="120" stroke="#00deff"
-            stroke-width="5" fill="none" stroke-dasharray="754" stroke-linecap="round" /> 
-        </svg>
+        <div class="wrap">
+            <div id="timer">
+            <svg width="260" height="260" class="base-timer__svg">
+                <circle class="defaultCircle" cx="125" cy="125" r="120" stroke="#80eeff"
+                stroke-width="5" fill="none" stroke-linecap="round" />
+                <circle id="animateCircle" cx="135" cy="125" r="120" stroke="#00deff"
+                stroke-width="5" fill="none" stroke-dasharray="754" stroke-linecap="round" /> 
+            </svg>
 
-            <span id="time-left">
-                00 : 00 : 00
-            </span>
+                <span id="time-left">
+                
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="btn-row">
-        <div class="col-6">
-            <button type="button" onclick="PR()" id="pause" style="background-color: #fff5ab; color: #c449c2" class="start btn">Pause</button>
+        <div class="btn-row">
+            <div class="col-6">
+                <button type="button" onclick="PR()" id="pause" style="background-color: #fff5ab; color: #c449c2" class="start btn">Pause</button>
+            </div>
+            <div class="col-6">
+                <button type="button" onclick="cancel()" id="cancel" class=" start btn">Cancel</button>
+            </div>    
         </div>
-        <div class="col-6">
-            <button type="button" onclick="cancel()" id="cancel" class=" start btn">Cancel</button>
-        </div>    
-    </div>
-
 `;
 
+
 function start(){
+    circle = document.getElementById("animateCircle")
+    console.log(circle);
     calcTime();
+    
     input = document.getElementById("input")
     input.style.display = "none"
     circular = document.getElementById("circular")
@@ -219,5 +230,6 @@ function cancel(){
     input.style.display = "initial"
     circular = document.getElementById("circular")
     circular.style.display = "none"
+    timePassed = 0;
 }
 
