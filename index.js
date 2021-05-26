@@ -201,7 +201,6 @@ function start(){
     circle = document.getElementById("animateCircle")
     console.log(circle);
     calcTime();
-    
     input = document.getElementById("input")
     input.style.display = "none"
     circular = document.getElementById("circular")
@@ -210,14 +209,17 @@ function start(){
 }
 
 var pr = 0;
+
 function PR(){
     if(pr == 0){
+        stopTimer();
         document.getElementById("pause").textContent = "Resume";
         document.getElementById("pause").style.backgroundColor = "#867ae9"
         document.getElementById("pause").style.color = "#fff5ab"
         pr = 1;
     }
     else{
+        startTimer();
         document.getElementById("pause").textContent = "Pause";
         document.getElementById("pause").style.backgroundColor = "#fff5ab"
         document.getElementById("pause").style.color = "#c449c2"
