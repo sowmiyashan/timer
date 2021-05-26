@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    background: #393e46;
+}
+
+#heading{
+    color: #fff;
+    /* background-color: #fff5ab; */
+    text-align: center;
+    font-size: 6vh;
+    padding: 2vh;
+    padding-bottom: 6vh;
+}
+
+.row{
+    width: 100%;
+    margin: 0;
+    padding-top: 9vh ;
+}
+
+.container{
+    padding: 0;
+    align-items: center;
+}
+
+.col-2{
+    padding: 0;
+    
+}
+
+.col-6{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.col-1{
+    padding: 0;
+    max-width: 6vw;
+}
+
+.title{
+    color:#fff5ab;
+    top: 0;
+    text-align: center;
+    font-size: 3vh;
+}
+
+.colon{
+    color:#fff5ab;
+    top: 0vh;
+    left: 8.5vw;
+    font-size: 5vh;
+}
+
+.con{
+    top: 0;
+    position: relative;
+    width: 10.5vh;
+    height: 9.5vh;
+    border-radius: 40vw;
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.con:hover{
+    top: -3vh;
+    height:16vh;
+    border: .4vh solid #fff5ab;
+}
+
+.con .prev{
+    position: absolute;
+    top: 20%;
+    right: 3.8vh;
+    display: block;
+    width: 2vh;
+    height: 2vh;
+    border-top:  .4vh solid #fff5ab;
+    border-left:  .4vh solid #fff5ab;
+    z-index: 1;
+    transform: rotate(45deg);
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.con:hover .prev{
+    opacity: 1;
+    top: 17%;
+}
+
+.con .next{
+    position: absolute;
+    top: 60%;
+    left: 3.8vh;
+    display: block;
+    width: 2vh;
+    height: 2vh;
+    border-top:  .4vh solid #fff5ab;
+    border-left:  .4vh solid #fff5ab;
+    z-index: 1;
+    transform: translateY(-50%) rotate(225deg);
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.con:hover .next{
+    opacity: 1;
+    top:74%
+}
+
+#hour span, #minute span, #sec span{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 8vh;
+    display: none;
+    color: #00deff;
+    font-size: 4vh;
+    font-weight: 700;
+    user-select: none;
+}
+
+.con:hover #hour span,
+.con:hover #minute span,
+.con:hover #sec span {
+    line-height: 14vh;
+}
+
+#hour span:nth-child(1),
+#minute span:nth-child(1),
+#sec span:nth-child(1){
+    display: initial;
+}
+
+.btn-row{
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start{
+    background-color: #fff5ab;
+    color: #867ae9;
+    border-radius: 50vw;
+    width: 17vh;
+    height: 9vh;
+    font-size: 3.5vh;
+    font-weight: 500;
+}
+
+
+#timer svg{
+    position: absolute;
+    left:0;
+    
+}
+
+#animateCircle{
+    /* Rounds the line endings to create a seamless circle */
+
+  /* Makes sure the animation starts at the top of the circle */
+  transform: rotate(270deg);
+  transform-origin: center;
+
+  /* One second aligns with the speed of the countdown timer */
+  transition: 1s linear all;
+
+}
+
+.base-timer__svg {
+    /* Flips the svg and makes the animation to move left-to-right */
+    transform: scaleX(1);
+}
+
+#timer{
+    position: relative;
+    width: 260px;
+    height: 260px;
+    line-height: 250px;
+    border-radius: 50%;
+    font-size: 32px;
+    margin: 0 auto;
+}
+
+.defaultCircle{
+    opacity: .3;
+}
+
+.wrap{
+    text-align: center;
+    color: #fff5ab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#input{
+    display: initial;
+}
+
+#circular{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
