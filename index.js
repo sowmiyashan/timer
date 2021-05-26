@@ -151,7 +151,7 @@ function startTimer() {
       if(timeLeft!=0){
         timePassed = timePassed += 1;
         timeLeft = TIME_LIMIT - timePassed;  
-        setCircleDasharray();
+        
       }
       else{
         stopTimer();
@@ -162,7 +162,7 @@ function startTimer() {
       // The time left label is updated
       document.getElementById("time-left").innerHTML = formatTime(timeLeft);
 
-      
+      setCircleDasharray();
     }, 1000);
     
 }
@@ -182,7 +182,7 @@ document.getElementById("circular").innerHTML = `
             </svg>
 
                 <span id="time-left">
-                
+                    00 : 00 : 00
                 </span>
             </div>
         </div>
@@ -230,6 +230,11 @@ function cancel(){
     input.style.display = "initial"
     circular = document.getElementById("circular")
     circular.style.display = "none"
-    timePassed = 0;
+    stopTimer();
+    document.getElementById("animateCircle").setAttribute("stroke-dasharray", "754");
+    timePassed = TIME_LIMIT = timeLeft = 0;
+    timerInterval = null;
+    document.getElementById("time-left").innerHTML = formatTime(timeLeft);
+    
 }
 
