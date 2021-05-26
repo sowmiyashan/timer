@@ -150,8 +150,7 @@ function startTimer() {
       // The amount of time passed increments by one
       if(timeLeft!=0){
         timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;  
-        
+        timeLeft = TIME_LIMIT - timePassed;   
       }
       else{
         stopTimer();
@@ -161,10 +160,8 @@ function startTimer() {
       
       // The time left label is updated
       document.getElementById("time-left").innerHTML = formatTime(timeLeft);
-
       setCircleDasharray();
-    }, 1000);
-    
+    }, 1000); 
 }
 
 function stopTimer(){
@@ -212,7 +209,7 @@ var pr = 0;
 
 function PR(){
     if(pr == 0){
-        stopTimer();
+        clearTimeout(timerInterval);
         document.getElementById("pause").textContent = "Resume";
         document.getElementById("pause").style.backgroundColor = "#867ae9"
         document.getElementById("pause").style.color = "#fff5ab"
