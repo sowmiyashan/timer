@@ -151,6 +151,7 @@ function startTimer() {
       if(timeLeft!=0){
         timePassed = timePassed += 1;
         timeLeft = TIME_LIMIT - timePassed;   
+        setCircleDasharray();
       }
       else{
         stopTimer();
@@ -160,7 +161,7 @@ function startTimer() {
       
       // The time left label is updated
       document.getElementById("time-left").innerHTML = formatTime(timeLeft);
-      setCircleDasharray();
+      
     }, 1000); 
 }
 
@@ -225,8 +226,9 @@ function PR(){
 }
 
 function cancel(){
-    pr = 1;
-    PR();
+    if(pr == 1){
+        PR();
+    }
     input = document.getElementById("input")
     input.style.display = "initial"
     circular = document.getElementById("circular")
