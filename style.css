@@ -34,7 +34,6 @@ body{
 
 .col-2{
     padding: 0;
-    
 }
 
 .col-6{
@@ -59,8 +58,8 @@ body{
 .colon{
     color:#fff5ab;
     top: 0vh;
-    left: 8.5vw;
     font-size: 5vh;
+    text-align: center;
 }
 
 .con{

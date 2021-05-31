@@ -184,14 +184,17 @@ document.getElementById("circular").innerHTML = `
                 </span>
             </div>
         </div>
-        <div class="btn-row">
-            <div class="col-6">
-                <button type="button" onclick="PR()" id="pause" style="background-color: #fff5ab; color: #c449c2" class="start btn">Pause</button>
+        <div class="d-flex justify-content-center">
+            <div class="btn-row">
+                <div class="col-6">
+                    <button type="button" onclick="PR()" id="pause" style="background-color: #fff5ab; color: #c449c2" class="start btn">Pause</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" onclick="cancel()" id="cancel" class=" start btn">Cancel</button>
+                </div>    
             </div>
-            <div class="col-6">
-                <button type="button" onclick="cancel()" id="cancel" class=" start btn">Cancel</button>
-            </div>    
         </div>
+        
 `;
 
 
